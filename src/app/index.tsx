@@ -8,6 +8,7 @@ import {
   useFonts as useBaloo2,
   Baloo2_700Bold,
 } from '@expo-google-fonts/baloo-2'
+import { Horse, Heart, Cube, Lightning } from 'phosphor-react-native'
 
 import { colors } from '@/styles/colors'
 import { fontFamily } from '@/styles/font-family'
@@ -36,6 +37,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Hello World</Text>
+      <Horse size={32} color={colors.gray[100]} />
+      <Heart size={32} color={colors.gray[100]} />
+      <Cube size={32} color={colors.gray[100]} />
+      <Lightning size={32} color={colors.gray[100]} />
     </View>
   )
 }
