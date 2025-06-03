@@ -8,11 +8,12 @@ import {
   useFonts as useBaloo2,
   Baloo2_700Bold,
 } from '@expo-google-fonts/baloo-2'
-import { Horse, Heart, Cube, Lightning } from 'phosphor-react-native'
 
 import { colors } from '@/styles/colors'
 import { fontFamily } from '@/styles/font-family'
 import { fontSize } from '@/styles/font-size'
+
+import { Button, ButtonText } from '@/components/shared/button'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -36,11 +37,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Hello World</Text>
-      <Horse size={32} color={colors.gray[100]} />
-      <Heart size={32} color={colors.gray[100]} />
-      <Cube size={32} color={colors.gray[100]} />
-      <Lightning size={32} color={colors.gray[100]} />
+      <Button style={{ marginBottom: 20 }}>
+        <ButtonText>Label</ButtonText>
+      </Button>
+
+      <Button type="purple">
+        <ButtonText>Label</ButtonText>
+      </Button>
     </View>
   )
 }
@@ -51,6 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gray[900],
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 16,
   },
   title: {
     fontSize: fontSize.xl,
