@@ -1,8 +1,38 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import {
+  useFonts as useRoboto,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto'
+import {
+  useFonts as useBaloo2,
+  Baloo2_700Bold,
+} from '@expo-google-fonts/baloo-2'
 
 import { colors } from '@/styles/colors'
+import { fontFamily } from '@/styles/font-family'
+import { fontSize } from '@/styles/font-size'
 
 export default function App() {
+  const [robotoLoaded] = useRoboto({
+    Roboto_400Regular,
+    Roboto_700Bold,
+  })
+  const [baloo2Loaded] = useBaloo2({
+    Baloo2_700Bold,
+  })
+
+  const fontsLoaded = robotoLoaded && baloo2Loaded
+
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.loading}>Loading fonts...</Text>
+        <ActivityIndicator size="large" color={colors.gray[100]} />
+      </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Hello World</Text>
@@ -18,8 +48,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: fontSize.xl,
+    fontFamily: fontFamily.roboto.bold,
     color: colors.gray[100],
+  },
+  loading: {
+    fontSize: fontSize.xl,
+    fontFamily: fontFamily.baloo2.bold,
+    color: colors.gray[100],
+    marginBottom: 20,
   },
 })
