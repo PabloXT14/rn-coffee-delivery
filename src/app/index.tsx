@@ -8,12 +8,14 @@ import {
   useFonts as useBaloo2,
   Baloo2_700Bold,
 } from '@expo-google-fonts/baloo-2'
+import { Plus, Trash } from 'phosphor-react-native'
 
 import { colors } from '@/styles/colors'
 import { fontFamily } from '@/styles/font-family'
 import { fontSize } from '@/styles/font-size'
 
 import { Button, ButtonText } from '@/components/shared/button'
+import { IconButton } from '@/components/shared/icon-button'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -37,13 +39,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Button style={{ marginBottom: 20 }}>
+      <Button>
         <ButtonText>Label</ButtonText>
       </Button>
 
       <Button type="purple">
         <ButtonText>Label</ButtonText>
       </Button>
+
+      <IconButton icon={Plus} />
+
+      <IconButton type="remove" icon={Trash} />
     </View>
   )
 }
@@ -55,6 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
+    gap: 16,
   },
   title: {
     fontSize: fontSize.xl,
@@ -65,6 +72,5 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xl,
     fontFamily: fontFamily.baloo2.bold,
     color: colors.gray[100],
-    marginBottom: 20,
   },
 })
