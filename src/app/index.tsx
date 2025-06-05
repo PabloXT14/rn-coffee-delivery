@@ -39,7 +39,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Button>
+      <Button isLoading>
         <ButtonText>Label</ButtonText>
       </Button>
 
@@ -47,7 +47,7 @@ export default function App() {
         <ButtonText>Label</ButtonText>
       </Button>
 
-      <IconButton icon={Plus} />
+      <IconButton icon={Plus} isLoading />
 
       <IconButton type="remove" icon={Trash} />
     </View>

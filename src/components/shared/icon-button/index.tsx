@@ -1,5 +1,6 @@
 import { type ReactNode, useState } from 'react'
 import {
+  ActivityIndicator,
   Pressable,
   type PressableProps,
   type StyleProp,
@@ -14,6 +15,7 @@ type IconButtonProps = PressableProps & {
   style?: StyleProp<ViewStyle>
   icon: Icon
   children?: ReactNode
+  isLoading?: boolean
 }
 
 export function IconButton({
@@ -21,6 +23,7 @@ export function IconButton({
   style,
   icon: Icon,
   children,
+  isLoading = false,
   ...props
 }: IconButtonProps) {
   const [isFocused, setIsFocused] = useState(false)
@@ -41,8 +44,14 @@ export function IconButton({
       ]}
       {...props}
     >
-      <Icon size={20} weight="bold" color={iconColor} />
-      {children}
+      {isLoading ? (
+        <ActivityIndicator size="small" color={iconColor} />
+      ) : (
+        <>
+          <Icon size={20} weight="bold" color={iconColor} />
+          {children}
+        </>
+      )}
     </Pressable>
   )
 }

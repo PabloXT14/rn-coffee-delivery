@@ -5,6 +5,7 @@ import {
   type PressableProps,
   type StyleProp,
   type ViewStyle,
+  ActivityIndicator,
 } from 'react-native'
 
 import { styles } from './styles'
@@ -12,9 +13,16 @@ import { styles } from './styles'
 type ButtonProps = PressableProps & {
   type?: 'yellow' | 'purple'
   style?: StyleProp<ViewStyle>
+  isLoading?: boolean
 }
 
-function Button({ type = 'yellow', style, ...props }: ButtonProps) {
+function Button({
+  type = 'yellow',
+  style,
+  isLoading = false,
+  children,
+  ...props
+}: ButtonProps) {
   return (
     <Pressable
       style={({ pressed }) => [
@@ -24,7 +32,13 @@ function Button({ type = 'yellow', style, ...props }: ButtonProps) {
         style,
       ]}
       {...props}
-    />
+    >
+      {isLoading ? (
+        <ActivityIndicator size="small" color={styles.text.color} />
+      ) : (
+        children
+      )}
+    </Pressable>
   )
 }
 
