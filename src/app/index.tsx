@@ -8,14 +8,12 @@ import {
   useFonts as useBaloo2,
   Baloo2_700Bold,
 } from '@expo-google-fonts/baloo-2'
-import { Plus, Trash } from 'phosphor-react-native'
 
 import { colors } from '@/styles/colors'
 import { fontFamily } from '@/styles/font-family'
 import { fontSize } from '@/styles/font-size'
 
-import { Button, ButtonText } from '@/components/shared/button'
-import { IconButton } from '@/components/shared/icon-button'
+import { CartIndicator } from '@/components/shared/cart-indicator'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -39,17 +37,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Button isLoading>
-        <ButtonText>Label</ButtonText>
-      </Button>
-
-      <Button type="purple">
-        <ButtonText>Label</ButtonText>
-      </Button>
-
-      <IconButton icon={Plus} isLoading />
-
-      <IconButton type="remove" icon={Trash} />
+      <CartIndicator itemsCount={3} />
     </View>
   )
 }
