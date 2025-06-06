@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import {
   useFonts as useRoboto,
@@ -11,8 +12,10 @@ import {
 
 import { colors } from '@/styles/colors'
 
-import { CartIndicator } from '@/components/shared/cart-indicator'
 import { Loading } from '@/components/shared/loading'
+import { Select } from '@/components/shared/select'
+
+const ITEMS = ['Label 1', 'Label 2', 'Label 3']
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -25,6 +28,8 @@ export default function App() {
 
   const fontsLoaded = robotoLoaded && baloo2Loaded
 
+  const [selectedItem, setSelectedItem] = useState(ITEMS[0])
+
   if (!fontsLoaded) {
     return (
       <View style={styles.container}>
@@ -35,7 +40,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <CartIndicator itemsCount={3} />
+      <View style={styles.itemsContainer}>
+        {ITEMS.map(item => (
+          <Select
+            key={item}
+            label={item}
+            isSelected={item === selectedItem}
+            onPress={() => setSelectedItem(item)}
+          />
+        ))}
+      </View>
     </View>
   )
 }
@@ -43,10 +57,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.gray[900],
+    backgroundColor: colors.gray[100],
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
+    gap: 16,
+  },
+  itemsContainer: {
+    maxWidth: 100,
+    width: '100%',
     gap: 16,
   },
 })
