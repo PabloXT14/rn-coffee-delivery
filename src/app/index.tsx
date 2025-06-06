@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import {
   useFonts as useRoboto,
   Roboto_400Regular,
@@ -10,10 +10,9 @@ import {
 } from '@expo-google-fonts/baloo-2'
 
 import { colors } from '@/styles/colors'
-import { fontFamily } from '@/styles/font-family'
-import { fontSize } from '@/styles/font-size'
 
 import { CartIndicator } from '@/components/shared/cart-indicator'
+import { Loading } from '@/components/shared/loading'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -29,8 +28,7 @@ export default function App() {
   if (!fontsLoaded) {
     return (
       <View style={styles.container}>
-        <Text style={styles.loading}>Loading fonts...</Text>
-        <ActivityIndicator size="large" color={colors.gray[100]} />
+        <Loading size="large" />
       </View>
     )
   }
@@ -50,15 +48,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     gap: 16,
-  },
-  title: {
-    fontSize: fontSize.xl,
-    fontFamily: fontFamily.roboto.bold,
-    color: colors.gray[100],
-  },
-  loading: {
-    fontSize: fontSize.xl,
-    fontFamily: fontFamily.baloo2.bold,
-    color: colors.gray[100],
   },
 })
