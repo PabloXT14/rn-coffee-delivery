@@ -9,13 +9,12 @@ import {
   useFonts as useBaloo2,
   Baloo2_700Bold,
 } from '@expo-google-fonts/baloo-2'
+import { Alarm } from 'phosphor-react-native'
 
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import { Tag } from '@/components/shared/tag'
-
-const ITEMS = ['Tag 1', 'Tag 2', 'Tag 3']
+import { Input, InputField, InputIcon } from '@/components/shared/input'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -28,7 +27,7 @@ export default function App() {
 
   const fontsLoaded = robotoLoaded && baloo2Loaded
 
-  const [selectedItem, setSelectedItem] = useState(ITEMS[0])
+  const [inputValue, setInputValue] = useState('')
 
   if (!fontsLoaded) {
     return (
@@ -40,16 +39,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.itemsContainer}>
-        {ITEMS.map(item => (
-          <Tag
-            key={item}
-            label={item}
-            isSelected={item === selectedItem}
-            onPress={() => setSelectedItem(item)}
-          />
-        ))}
-      </View>
+      <Input>
+        <InputIcon variant={inputValue ? 'filled' : 'default'} />
+        <InputField placeholder="Pesquisar" onChangeText={setInputValue} />
+      </Input>
     </View>
   )
 }
