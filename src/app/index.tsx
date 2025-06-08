@@ -13,9 +13,9 @@ import {
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import { Select } from '@/components/shared/select'
+import { Tag } from '@/components/shared/tag'
 
-const ITEMS = ['Label 1', 'Label 2', 'Label 3']
+const ITEMS = ['Tag 1', 'Tag 2', 'Tag 3']
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -42,7 +42,7 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.itemsContainer}>
         {ITEMS.map(item => (
-          <Select
+          <Tag
             key={item}
             label={item}
             isSelected={item === selectedItem}
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
   itemsContainer: {
     maxWidth: 100,
     width: '100%',
+    alignItems: 'center',
     gap: 16,
   },
 })
