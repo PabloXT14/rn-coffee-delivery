@@ -14,7 +14,7 @@ import { Alarm } from 'phosphor-react-native'
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import { Input, InputField, InputIcon } from '@/components/shared/input'
+import { InputNumber } from '@/components/shared/input-number'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -27,7 +27,19 @@ export default function App() {
 
   const fontsLoaded = robotoLoaded && baloo2Loaded
 
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState(1)
+
+  function handleDecrement() {
+    if (inputValue > 1) {
+      setInputValue(inputValue - 1)
+    }
+
+    return
+  }
+
+  function handleIncrement() {
+    setInputValue(inputValue + 1)
+  }
 
   if (!fontsLoaded) {
     return (
@@ -39,10 +51,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Input>
-        <InputIcon variant={inputValue ? 'filled' : 'default'} />
-        <InputField placeholder="Pesquisar" onChangeText={setInputValue} />
-      </Input>
+      <InputNumber
+        value={inputValue}
+        onDecrement={handleDecrement}
+        onIncrement={handleIncrement}
+      />
     </View>
   )
 }
