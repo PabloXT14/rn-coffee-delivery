@@ -12,7 +12,7 @@ import {
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import { HighlightCard } from '@/components/shared/highlight-card'
+import { CatalogCard } from '@/components/shared/catalog-card'
 
 import { COFFEES } from '@/data/coffees'
 
@@ -38,9 +38,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <FlatList
-        horizontal
         data={COFFEES}
-        renderItem={({ item }) => <HighlightCard coffee={item} />}
+        renderItem={({ item }) => <CatalogCard coffee={item} />}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.itemsContainer}
         showsHorizontalScrollIndicator={false}
@@ -53,14 +52,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.gray[100],
-    alignItems: 'center',
-    justifyContent: 'center',
     padding: 16,
     gap: 16,
   },
   itemsContainer: {
-    alignItems: 'center',
-    gap: 16,
-    paddingHorizontal: 32,
+    gap: 32,
+    paddingTop: 32,
+    paddingBottom: 32,
   },
 })
