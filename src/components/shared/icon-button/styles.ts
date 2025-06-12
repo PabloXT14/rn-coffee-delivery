@@ -26,15 +26,15 @@ export const styles = StyleSheet.create({
     color: colors.purple[600],
   },
   remove: {
-    backgroundColor: colors.gray[400],
-  },
-  removeFocused: {
     backgroundColor: colors.gray[300],
   },
+  removeFocused: {
+    backgroundColor: colors.gray[400],
+  },
   removeIcon: {
-    color: colors.purple[600],
+    color: colors.purple[500],
   },
   removeFocusedIcon: {
-    color: colors.purple[500],
+    color: colors.purple[600],
   },
 })
