@@ -30,7 +30,7 @@ export function InputNumber({
         ]}
       >
         <Minus
-          size={24}
+          size={20}
           weight="bold"
           color={
             pressedDecrement ? styles.iconPressed.color : styles.icon.color
@@ -50,7 +50,7 @@ export function InputNumber({
         ]}
       >
         <Plus
-          size={24}
+          size={20}
           weight="bold"
           color={
             pressedIncrement ? styles.iconPressed.color : styles.icon.color
