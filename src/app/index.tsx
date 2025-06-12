@@ -12,7 +12,7 @@ import {
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import { CatalogCard } from '@/components/shared/catalog-card'
+import { CartCard } from '@/components/shared/cart-card'
 
 import { COFFEES } from '@/data/coffees'
 
@@ -39,7 +39,18 @@ export default function App() {
     <View style={styles.container}>
       <FlatList
         data={COFFEES}
-        renderItem={({ item }) => <CatalogCard coffee={item} />}
+        renderItem={({ item }) => (
+          <CartCard
+            data={{
+              ...item,
+              size: '227ml',
+              quantity: 1,
+              onDecrement: () => {},
+              onIncrement: () => {},
+              onDelete: () => {},
+            }}
+          />
+        )}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.itemsContainer}
         showsHorizontalScrollIndicator={false}
