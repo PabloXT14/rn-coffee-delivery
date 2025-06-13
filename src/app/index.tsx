@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import {
   useFonts as useRoboto,
   Roboto_400Regular,
@@ -12,9 +12,13 @@ import {
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import { CartCard } from '@/components/shared/cart-card'
-
-import { COFFEES } from '@/data/coffees'
+import {
+  BackButton,
+  Location,
+  Navbar,
+  NavbarTitle,
+} from '@/components/shared/navbar'
+import { CartIndicator } from '@/components/shared/cart-indicator'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -37,24 +41,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={COFFEES}
-        renderItem={({ item }) => (
-          <CartCard
-            data={{
-              ...item,
-              size: '227ml',
-              quantity: 1,
-              onDecrement: () => {},
-              onIncrement: () => {},
-              onDelete: () => {},
-            }}
-          />
-        )}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.itemsContainer}
-        showsHorizontalScrollIndicator={false}
-      />
+      <View style={styles.intro}>
+        <Navbar>
+          <Location />
+
+          <CartIndicator itemsCount={0} />
+        </Navbar>
+      </View>
     </View>
   )
 }
@@ -63,12 +56,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.gray[100],
-    padding: 16,
-    gap: 16,
   },
-  itemsContainer: {
-    gap: 32,
-    paddingTop: 32,
-    paddingBottom: 32,
+  intro: {
+    backgroundColor: colors.gray[900],
   },
 })
