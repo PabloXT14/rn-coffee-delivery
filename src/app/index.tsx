@@ -12,13 +12,7 @@ import {
 import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
-import {
-  BackButton,
-  Location,
-  Navbar,
-  NavbarTitle,
-} from '@/components/shared/navbar'
-import { CartIndicator } from '@/components/shared/cart-indicator'
+import { IntroSection } from '@/components/screens/catalog/intro-section'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -41,13 +35,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.intro}>
-        <Navbar>
-          <Location />
-
-          <CartIndicator itemsCount={0} />
-        </Navbar>
-      </View>
+      <IntroSection />
     </View>
   )
 }
@@ -56,8 +44,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.gray[100],
-  },
-  intro: {
-    backgroundColor: colors.gray[900],
   },
 })
