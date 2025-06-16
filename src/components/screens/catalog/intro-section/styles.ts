@@ -6,6 +6,7 @@ import { fontSize } from '@/styles/font-size'
 
 export const styles = StyleSheet.create({
   container: {
+    zIndex: 1,
     backgroundColor: colors.gray[900],
   },
   content: {

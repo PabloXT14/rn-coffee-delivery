@@ -13,6 +13,7 @@ import { colors } from '@/styles/colors'
 
 import { Loading } from '@/components/shared/loading'
 import { IntroSection } from '@/components/screens/catalog/intro-section'
+import { CarouselSection } from '@/components/screens/catalog/carousel-section'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -25,7 +26,7 @@ export default function App() {
 
   const fontsLoaded = robotoLoaded && baloo2Loaded
 
-  if (fontsLoaded) {
+  if (!fontsLoaded) {
     return (
       <View style={styles.container}>
         <Loading size="large" />
@@ -36,6 +37,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <IntroSection />
+      <CarouselSection />
     </View>
   )
 }

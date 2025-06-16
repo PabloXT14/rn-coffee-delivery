@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    maxWidth: 168,
+    maxWidth: 180,
     width: '100%',
     backgroundColor: colors.gray[200],
     borderWidth: 1,
@@ -25,9 +25,9 @@ export const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    top: -10,
-    width: 64,
-    height: 64,
+    top: -24,
+    width: 80,
+    height: 80,
     objectFit: 'cover',
   },
   tagContainer: {

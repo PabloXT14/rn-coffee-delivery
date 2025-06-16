@@ -14,7 +14,7 @@ type HighlightCardProps = TouchableOpacityProps & {
   coffee: Coffee
 }
 
-export function HighlightCard({ coffee, ...props }: HighlightCardProps) {
+export function HighlightCard({ coffee, style, ...props }: HighlightCardProps) {
   const formattedPrice = Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -23,7 +23,7 @@ export function HighlightCard({ coffee, ...props }: HighlightCardProps) {
     .replace('R$', '')
 
   return (
-    <TouchableOpacity style={styles.container} {...props}>
+    <TouchableOpacity style={[styles.container, style]} {...props}>
       <Image source={coffee.image} alt="coffee" style={styles.image} />
 
       <View style={styles.tagContainer}>
@@ -31,8 +31,12 @@ export function HighlightCard({ coffee, ...props }: HighlightCardProps) {
       </View>
 
       <View style={styles.info}>
-        <Text style={styles.name}>{coffee.name}</Text>
-        <Text style={styles.description}>{coffee.description}</Text>
+        <Text style={styles.name} numberOfLines={1}>
+          {coffee.name}
+        </Text>
+        <Text style={styles.description} numberOfLines={2}>
+          {coffee.description}
+        </Text>
       </View>
 
       <View style={styles.priceContainer}>
