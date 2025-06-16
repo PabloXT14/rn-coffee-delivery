@@ -25,7 +25,7 @@ export default function App() {
 
   const fontsLoaded = robotoLoaded && baloo2Loaded
 
-  if (!fontsLoaded) {
+  if (fontsLoaded) {
     return (
       <View style={styles.container}>
         <Loading size="large" />
