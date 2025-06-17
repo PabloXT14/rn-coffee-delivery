@@ -14,6 +14,7 @@ import { colors } from '@/styles/colors'
 import { Loading } from '@/components/shared/loading'
 import { IntroSection } from '@/components/screens/catalog/intro-section'
 import { CarouselSection } from '@/components/screens/catalog/carousel-section'
+import { CoffeeList } from '@/components/screens/catalog/coffee-list'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -38,6 +39,7 @@ export default function App() {
     <View style={styles.container}>
       <IntroSection />
       <CarouselSection />
+      <CoffeeList />
     </View>
   )
 }
