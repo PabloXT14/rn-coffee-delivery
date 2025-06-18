@@ -24,6 +24,6 @@ export function getCoffeeSections(coffees: Coffee[]): CoffeeSection[] {
 
   return Array.from(sectionMap.entries()).map(([title, data]) => ({
     title,
-    data: data.sort((a, b) => a.name.localeCompare(b.name)),
+    data,
   })) // [[title, data], ...]
 }
