@@ -20,4 +20,20 @@ export const styles = StyleSheet.create({
     gap: 8,
     paddingHorizontal: 32,
   },
+  list: {
+    paddingTop: 16,
+    paddingHorizontal: 32,
+    paddingBottom: 64,
+    gap: 48,
+  },
+  sectionList: {
+    gap: 32,
+  },
+  sectionTitle: {
+    color: colors.gray[600],
+    fontSize: fontSize.sm,
+    fontFamily: fontFamily.baloo2.bold,
+    lineHeight: 20, // 130%
+    textTransform: 'capitalize',
+  },
 })

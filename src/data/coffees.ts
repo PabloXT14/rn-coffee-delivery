@@ -7,7 +7,7 @@ export const COFFEES: Coffee[] = [
     description: 'Café expresso com o dobro de leite e espuma cremosa',
     price: 990,
     image: require('@/assets/images/coffees/latte.png'),
-    tags: ['tradicional'],
+    tags: ['tradicionais'],
   },
   {
     id: '2',
@@ -15,7 +15,7 @@ export const COFFEES: Coffee[] = [
     description: 'Café expresso com calda de chocolate, leite e espuma',
     price: 990,
     image: require('@/assets/images/coffees/mochaccino.png'),
-    tags: ['doce'],
+    tags: ['doces'],
   },
   {
     id: '3',
@@ -23,6 +23,6 @@ export const COFFEES: Coffee[] = [
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     price: 990,
     image: require('@/assets/images/coffees/irlandes.png'),
-    tags: ['especial'],
+    tags: ['especiais'],
   },
 ]

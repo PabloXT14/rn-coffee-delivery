@@ -1,14 +1,20 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  type TouchableOpacityProps,
+  View,
+} from 'react-native'
 
 import type { Coffee } from '@/@types/coffee'
 
 import { styles } from './styles'
 
-type CatalogCardProps = {
+type CatalogCardProps = TouchableOpacityProps & {
   coffee: Coffee
 }
 
-export function CatalogCard({ coffee }: CatalogCardProps) {
+export function CatalogCard({ coffee, ...props }: CatalogCardProps) {
   const formattedPrice = Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -17,7 +23,7 @@ export function CatalogCard({ coffee }: CatalogCardProps) {
     .replace('R$', '')
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} {...props}>
       <Image source={coffee.image} alt="coffee" style={styles.image} />
 
       <View style={styles.content}>

@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import {
   useFonts as useRoboto,
   Roboto_400Regular,
@@ -36,11 +36,11 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <IntroSection />
       <CarouselSection />
       <CoffeeList />
-    </View>
+    </ScrollView>
   )
 }
 
