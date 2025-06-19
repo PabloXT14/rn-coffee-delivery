@@ -9,6 +9,8 @@ export default function RootLayout() {
 
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
+        <Stack.Screen name="product/[id]" />
+        {/* <Stack.Screen name="not-found" /> */}
       </Stack>
     </>
   )

@@ -6,6 +6,7 @@ import {
   View,
   type ViewProps,
 } from 'react-native'
+import { router } from 'expo-router'
 import { ArrowLeft, MapPin } from 'phosphor-react-native'
 
 import { colors } from '@/styles/colors'
@@ -32,8 +33,16 @@ type BackButtonProps = TouchableOpacityProps & {
 }
 
 function BackButton({ variant = 'light', ...props }: BackButtonProps) {
+  const handleGoBack = () => {
+    router.back()
+  }
+
   return (
-    <TouchableOpacity style={styles.backButton} {...props}>
+    <TouchableOpacity
+      style={styles.backButton}
+      onPress={handleGoBack}
+      {...props}
+    >
       <ArrowLeft
         size={24}
         color={variant === 'light' ? colors.white : colors.gray[900]}

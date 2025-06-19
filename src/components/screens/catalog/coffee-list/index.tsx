@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
+import { router } from 'expo-router'
 
 import { Tag } from '@/components/shared/tag'
+import { CatalogCard } from '@/components/shared/catalog-card'
 
 import { getCoffeeSections } from '@/http/get-coffee-sections'
 import { COFFEES } from '@/data/coffees'
 
 import { styles } from './styles'
-import { CatalogCard } from '@/components/shared/catalog-card'
 
 const FILTERS = [
   { id: '1', name: 'Tradicionais' },
@@ -24,6 +25,10 @@ const COFFEE_SECTIONS = getCoffeeSections(COFFEES)
 
 export function CoffeeList() {
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null)
+
+  const handleNavigation = (id: string) => {
+    router.push(`/product/${id}`)
+  }
 
   const handleFilterSelect = (filter: string) => {
     if (selectedFilter === filter) {
@@ -66,6 +71,7 @@ export function CoffeeList() {
           contentContainerStyle={styles.filter}
         />
       </View>
+
       <View style={styles.list}>
         {filteredSections.map(section => (
           <View key={section.title} style={styles.sectionList}>
@@ -75,7 +81,7 @@ export function CoffeeList() {
               <CatalogCard
                 key={coffee.id}
                 coffee={coffee}
-                onPress={() => console.log(coffee.name)}
+                onPress={() => handleNavigation(coffee.id)}
               />
             ))}
           </View>

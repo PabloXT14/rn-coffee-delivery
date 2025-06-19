@@ -1,4 +1,5 @@
 import { FlatList, View } from 'react-native'
+import { router } from 'expo-router'
 
 import { COFFEES } from '@/data/coffees'
 
@@ -13,6 +14,10 @@ const HIGHLIGHT_COFFEES = [
 ]
 
 export function CarouselSection() {
+  const handleNavigation = (id: string) => {
+    router.push(`/product/${id}`)
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -21,6 +26,7 @@ export function CarouselSection() {
         renderItem={({ item, index }) => (
           <HighlightCard
             coffee={item}
+            onPress={() => handleNavigation(item.id)}
             style={{
               transform: [{ scale: index === 0 ? 1.2 : 1 }],
               marginRight: index === 0 ? 24 : 0,
