@@ -8,10 +8,10 @@ import { styles } from './styles'
 
 type TagProps = TouchableOpacityProps & {
   label: string
-  isSelected: boolean
+  isSelected?: boolean
 }
 
-export function Tag({ label, isSelected, style, ...props }: TagProps) {
+export function Tag({ label, isSelected = false, style, ...props }: TagProps) {
   return (
     <TouchableOpacity
       style={[styles.container, isSelected && styles.selected, style]}

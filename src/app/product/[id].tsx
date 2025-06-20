@@ -5,12 +5,14 @@ import { useLocalSearchParams } from 'expo-router'
 import { Navbar, BackButton } from '@/components/shared/navbar'
 import { CartIndicator } from '@/components/shared/cart-indicator'
 import { Loading } from '@/components/shared/loading'
+import { Content } from '@/components/screens/product/content'
 
 import { colors } from '@/styles/colors'
 
 import { getCoffeeById } from '@/http/get-coffee-by-id'
 
 import type { Coffee } from '@/@types/coffee'
+import { Footer } from '@/components/screens/product/footer'
 
 export default function Product() {
   const { id } = useLocalSearchParams()
@@ -42,6 +44,10 @@ export default function Product() {
         <BackButton />
         <CartIndicator itemsCount={3} />
       </Navbar>
+
+      <Content coffee={coffee} />
+
+      <Footer />
     </View>
   )
 }
