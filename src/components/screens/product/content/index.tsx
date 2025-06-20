@@ -53,7 +53,7 @@ export function Content({ coffee }: ContentProps) {
         <SmokeImg style={styles.smoke} />
 
         <Image
-          source={coffeeIllustration}
+          source={coffeeIllustration} // Essa imagem tem um espaçamento em transparente a sua volta
           alt="coffee-illustration"
           style={styles.image}
         />

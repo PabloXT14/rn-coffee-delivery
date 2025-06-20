@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 12,
     paddingHorizontal: 32,
-    gap: 108,
+    justifyContent: 'space-between',
   },
   info: {
     width: '100%',
@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
     width: 295,
     height: 'auto',
     marginHorizontal: 'auto',
-    marginTop: 32,
+    marginTop: 140,
   },
   image: {
     width: '100%',
