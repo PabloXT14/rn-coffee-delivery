@@ -11,13 +11,13 @@ import {
 import { styles } from './styles'
 
 type ButtonProps = PressableProps & {
-  type?: 'yellow' | 'purple'
+  type?: 'purple' | 'yellow'
   style?: StyleProp<ViewStyle>
   isLoading?: boolean
 }
 
 function Button({
-  type = 'yellow',
+  type = 'purple',
   style,
   isLoading = false,
   children,
