@@ -1,19 +1,12 @@
-import { Image, type ImageSourcePropType, Text, View } from 'react-native'
-import { styles } from './styles'
-import { InputNumber } from '../input-number'
-import { IconButton } from '../icon-button'
+import { Image, Text, View } from 'react-native'
 import { Trash } from 'phosphor-react-native'
 
-type CartItem = {
-  image: ImageSourcePropType
-  name: string
-  price: number
-  size: string
-  quantity: number
-  onIncrement: () => void
-  onDecrement: () => void
-  onDelete: () => void
-}
+import { InputNumber } from '../input-number'
+import { IconButton } from '../icon-button'
+
+import type { CartItem } from '@/@types/coffee'
+
+import { styles } from './styles'
 
 type CartCardProps = {
   data: CartItem

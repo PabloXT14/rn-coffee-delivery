@@ -8,3 +8,14 @@ export type Coffee = {
   image: ImageSourcePropType
   tags: string[]
 }
+
+export type CartItem = {
+  image: ImageSourcePropType
+  name: string
+  price: number
+  size: string
+  quantity: number
+  onIncrement: () => void
+  onDecrement: () => void
+  onDelete: () => void
+}

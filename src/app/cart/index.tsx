@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native'
 
 import { BackButton, Navbar, NavbarTitle } from '@/components/shared/navbar'
+import { CartItems } from '@/components/screens/cart/cart-items'
 
 import { colors } from '@/styles/colors'
 
@@ -11,6 +12,8 @@ export default function Cart() {
         <BackButton variant="dark" />
         <NavbarTitle title="Carrinho" />
       </Navbar>
+
+      <CartItems />
     </View>
   )
 }
