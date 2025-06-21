@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+
+import { BackButton, Navbar, NavbarTitle } from '@/components/shared/navbar'
 
 import { colors } from '@/styles/colors'
 
 export default function Cart() {
   return (
     <View style={styles.container}>
-      <Text>Cart</Text>
+      <Navbar style={{ borderBottomWidth: 1, borderColor: colors.gray[300] }}>
+        <BackButton variant="dark" />
+        <NavbarTitle title="Carrinho" />
+      </Navbar>
     </View>
   )
 }
@@ -13,6 +18,6 @@ export default function Cart() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.gray[300],
+    backgroundColor: colors.gray[100],
   },
 })
