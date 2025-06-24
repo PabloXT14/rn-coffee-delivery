@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, StatusBar } from 'react-native'
 
 import { BackButton, Navbar, NavbarTitle } from '@/components/shared/navbar'
 import { CartItems } from '@/components/screens/cart/cart-items'
@@ -8,16 +8,20 @@ import { colors } from '@/styles/colors'
 
 export default function Cart() {
   return (
-    <View style={styles.container}>
-      <Navbar style={{ borderBottomWidth: 1, borderColor: colors.gray[300] }}>
-        <BackButton variant="dark" />
-        <NavbarTitle title="Carrinho" />
-      </Navbar>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.gray[100]} />
 
-      <CartItems />
+      <View style={styles.container}>
+        <Navbar style={{ borderBottomWidth: 1, borderColor: colors.gray[300] }}>
+          <BackButton variant="dark" />
+          <NavbarTitle title="Carrinho" />
+        </Navbar>
 
-      <Order />
-    </View>
+        <CartItems />
+
+        <Order />
+      </View>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, StatusBar } from 'react-native'
 import {
   useFonts as useRoboto,
   Roboto_400Regular,
@@ -29,18 +29,29 @@ export default function App() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.container}>
-        <Loading size="large" />
-      </View>
+      <>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={colors.gray[900]}
+        />
+
+        <View style={styles.container}>
+          <Loading size="large" />
+        </View>
+      </>
     )
   }
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <IntroSection />
-      <CarouselSection />
-      <CoffeeList />
-    </ScrollView>
+    <>
+      <StatusBar barStyle="light-content" backgroundColor={colors.gray[900]} />
+
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <IntroSection />
+        <CarouselSection />
+        <CoffeeList />
+      </ScrollView>
+    </>
   )
 }
 
