@@ -7,17 +7,15 @@ import {
 import { router } from 'expo-router'
 import { ShoppingCart } from 'phosphor-react-native'
 
+import { useCartStore } from '@/store/use-cart-store'
+
 import { styles } from './styles'
 
-type CartIndicatorProps = TouchableOpacityProps & {
-  itemsCount: number
-}
+type CartIndicatorProps = TouchableOpacityProps
 
-export function CartIndicator({
-  itemsCount,
-  style,
-  ...props
-}: CartIndicatorProps) {
+export function CartIndicator({ style, ...props }: CartIndicatorProps) {
+  const itemsCount = useCartStore(state => state.items.length)
+
   const iconColor = itemsCount > 0 ? styles.full.color : styles.empty.color
   const quantityText = itemsCount > 9 ? '9+' : itemsCount
 

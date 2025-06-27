@@ -17,7 +17,7 @@ export function IntroSection() {
       <Navbar>
         <Location />
 
-        <CartIndicator itemsCount={0} />
+        <CartIndicator />
       </Navbar>
 
       <View style={styles.content}>

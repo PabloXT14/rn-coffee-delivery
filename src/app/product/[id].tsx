@@ -42,7 +42,7 @@ export default function Product() {
     <View style={styles.container}>
       <Navbar>
         <BackButton />
-        <CartIndicator itemsCount={3} />
+        <CartIndicator />
       </Navbar>
 
       <Content coffee={coffee} />
