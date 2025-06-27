@@ -6,6 +6,8 @@ import { IconButton } from '../icon-button'
 
 import type { CartItem } from '@/@types/coffee'
 
+import { useCartStore } from '@/store/use-cart-store'
+
 import { styles } from './styles'
 
 type CartCardProps = {
@@ -13,6 +15,9 @@ type CartCardProps = {
 }
 
 export function CartCard({ data }: CartCardProps) {
+  const removeItem = useCartStore(state => state.removeItem)
+  const updateQuantity = useCartStore(state => state.updateQuantity)
+
   const formattedPrice = Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -38,12 +43,16 @@ export function CartCard({ data }: CartCardProps) {
           <View style={styles.counter}>
             <InputNumber
               value={data.quantity}
-              onIncrement={data.onIncrement}
-              onDecrement={data.onDecrement}
+              onIncrement={() => updateQuantity(data.id, data.quantity + 1)}
+              onDecrement={() => updateQuantity(data.id, data.quantity - 1)}
             />
           </View>
 
-          <IconButton icon={Trash} type="remove" onPress={data.onDelete} />
+          <IconButton
+            icon={Trash}
+            type="remove"
+            onPress={() => removeItem(data.id)}
+          />
         </View>
       </View>
     </View>

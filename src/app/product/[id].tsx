@@ -47,7 +47,7 @@ export default function Product() {
 
       <Content coffee={coffee} />
 
-      <Footer />
+      <Footer coffee={coffee} />
     </View>
   )
 }

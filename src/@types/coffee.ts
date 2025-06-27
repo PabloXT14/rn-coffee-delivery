@@ -10,12 +10,10 @@ export type Coffee = {
 }
 
 export type CartItem = {
-  image: ImageSourcePropType
+  id: string
   name: string
-  price: number
   size: string
+  price: number
   quantity: number
-  onIncrement: () => void
-  onDecrement: () => void
-  onDelete: () => void
+  image: ImageSourcePropType
 }
