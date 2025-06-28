@@ -3,9 +3,22 @@ import { router } from 'expo-router'
 
 import { Button, ButtonText } from '@/components/shared/button'
 
+import { useCartStore } from '@/store/use-cart-store'
+
 import { styles } from './styles'
 
 export function Order() {
+  const { items } = useCartStore(state => state)
+
+  const totalPrice = items.reduce((acc, item) => {
+    return acc + item.price * item.quantity
+  }, 0)
+
+  const totalPriceFormatted = Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(totalPrice / 100)
+
   const handleGoToPurchaseComplete = () => {
     router.navigate('/purchase-complete')
   }
@@ -14,7 +27,7 @@ export function Order() {
     <View style={styles.container}>
       <View style={styles.info}>
         <Text style={styles.infoText}>Valor total</Text>
-        <Text style={styles.price}>R$ 29,70</Text>
+        <Text style={styles.price}>{totalPriceFormatted}</Text>
       </View>
 
       <Button type="yellow" onPress={handleGoToPurchaseComplete}>
