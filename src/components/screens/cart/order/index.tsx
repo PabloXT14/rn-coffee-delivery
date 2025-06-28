@@ -8,7 +8,8 @@ import { useCartStore } from '@/store/use-cart-store'
 import { styles } from './styles'
 
 export function Order() {
-  const { items } = useCartStore(state => state)
+  const items = useCartStore(state => state.items)
+  const cleanCart = useCartStore(state => state.clearCart)
 
   const totalPrice = items.reduce((acc, item) => {
     return acc + item.price * item.quantity
@@ -21,6 +22,7 @@ export function Order() {
 
   const handleGoToPurchaseComplete = () => {
     router.navigate('/purchase-complete')
+    cleanCart()
   }
 
   return (
