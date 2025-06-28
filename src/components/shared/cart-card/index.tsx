@@ -23,6 +23,16 @@ export function CartCard({ data }: CartCardProps) {
     currency: 'BRL',
   }).format(data.price / 100)
 
+  const handleIncrement = () => {
+    updateQuantity(data.id, data.size, data.quantity + 1)
+  }
+
+  const handleDecrement = () => {
+    if (data.quantity > 1) {
+      updateQuantity(data.id, data.size, data.quantity - 1)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Image source={data.image} style={styles.image} />
@@ -43,15 +53,15 @@ export function CartCard({ data }: CartCardProps) {
           <View style={styles.counter}>
             <InputNumber
               value={data.quantity}
-              onIncrement={() => updateQuantity(data.id, data.quantity + 1)}
-              onDecrement={() => updateQuantity(data.id, data.quantity - 1)}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
             />
           </View>
 
           <IconButton
             icon={Trash}
             type="remove"
-            onPress={() => removeItem(data.id)}
+            onPress={() => removeItem(data.id, data.size)}
           />
         </View>
       </View>
