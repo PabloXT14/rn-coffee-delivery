@@ -19,8 +19,6 @@ export default function Product() {
 
   const [coffee, setCoffee] = useState<Coffee | null>(null)
 
-  console.log('Product ID:', id)
-
   useEffect(() => {
     const fetchCoffee = async () => {
       const { coffee } = await getCoffeeById(id as string)
