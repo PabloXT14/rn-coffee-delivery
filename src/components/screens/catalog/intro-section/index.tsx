@@ -9,9 +9,12 @@ import bgIntroSection from '@/assets/images/bg-intro-section.png'
 
 import { styles } from './styles'
 
-export function IntroSection() {
-  const [search, setSearch] = useState('')
+type IntroSectionProps = {
+  search: string
+  setSearch: (value: string) => void
+}
 
+export function IntroSection({ search, setSearch }: IntroSectionProps) {
   return (
     <View style={styles.container}>
       <Navbar>

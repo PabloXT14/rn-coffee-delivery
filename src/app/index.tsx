@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { View, StyleSheet, ScrollView, StatusBar } from 'react-native'
 import {
   useFonts as useRoboto,
@@ -15,6 +16,7 @@ import { Loading } from '@/components/shared/loading'
 import { IntroSection } from '@/components/screens/catalog/intro-section'
 import { CarouselSection } from '@/components/screens/catalog/carousel-section'
 import { CoffeeList } from '@/components/screens/catalog/coffee-list'
+import { SearchCoffeeList } from '@/components/screens/catalog/search-coffee-list'
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -26,6 +28,8 @@ export default function App() {
   })
 
   const fontsLoaded = robotoLoaded && baloo2Loaded
+
+  const [search, setSearch] = useState('')
 
   if (!fontsLoaded) {
     return (
@@ -46,10 +50,21 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" backgroundColor={colors.gray[900]} />
 
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <IntroSection />
-        <CarouselSection />
-        <CoffeeList />
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <IntroSection search={search} setSearch={setSearch} />
+
+        {search ? (
+          <SearchCoffeeList query={search} />
+        ) : (
+          <>
+            <CarouselSection />
+            <CoffeeList />
+          </>
+        )}
       </ScrollView>
     </>
   )
