@@ -21,8 +21,6 @@ export function SearchCoffeeList({ query }: SearchCoffeeListProps) {
   const fetchCoffees = async () => {
     const { coffees } = await getCoffeesByQuery(query)
 
-    console.log('coffees', coffees)
-
     setCoffees(coffees)
   }
 

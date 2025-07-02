@@ -1,10 +1,8 @@
-import { randomUUID } from 'expo-crypto'
-
 import type { Coffee } from '@/@types/coffee'
 
 export const COFFEES: Coffee[] = [
   {
-    id: randomUUID(),
+    id: '1',
     name: 'Latte',
     description: 'Café expresso com o dobro de leite e espuma cremosa',
     price: 990,
@@ -12,7 +10,7 @@ export const COFFEES: Coffee[] = [
     tags: ['tradicionais'],
   },
   {
-    id: randomUUID(),
+    id: '2',
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     price: 890,
@@ -20,7 +18,7 @@ export const COFFEES: Coffee[] = [
     tags: ['tradicionais'],
   },
   {
-    id: randomUUID(),
+    id: '3',
     name: 'Expresso Americano',
     description:
       'Expresso diluído em água quente, menos intenso que o tradicional',
@@ -29,7 +27,7 @@ export const COFFEES: Coffee[] = [
     tags: ['tradicionais'],
   },
   {
-    id: randomUUID(),
+    id: '4',
     name: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     price: 990,
@@ -37,7 +35,7 @@ export const COFFEES: Coffee[] = [
     tags: ['tradicionais'],
   },
   {
-    id: randomUUID(),
+    id: '5',
     name: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 890,
@@ -45,7 +43,7 @@ export const COFFEES: Coffee[] = [
     tags: ['tradicionais'],
   },
   {
-    id: randomUUID(),
+    id: '6',
     name: 'Cappuccino',
     description:
       'Bebida feita com doses de canela, café expresso, leite e espuma',
@@ -54,7 +52,7 @@ export const COFFEES: Coffee[] = [
     tags: ['doces'],
   },
   {
-    id: randomUUID(),
+    id: '7',
     name: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, leite e espuma',
     price: 990,
@@ -62,7 +60,7 @@ export const COFFEES: Coffee[] = [
     tags: ['doces'],
   },
   {
-    id: randomUUID(),
+    id: '8',
     name: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     price: 990,
@@ -70,7 +68,7 @@ export const COFFEES: Coffee[] = [
     tags: ['doces'],
   },
   {
-    id: randomUUID(),
+    id: '9',
     name: 'Cubano',
     description:
       'Drink gelado de café expresso com rum, creme de leite e hortelã',
@@ -79,7 +77,7 @@ export const COFFEES: Coffee[] = [
     tags: ['especiais'],
   },
   {
-    id: randomUUID(),
+    id: '10',
     name: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     price: 990,
@@ -87,7 +85,7 @@ export const COFFEES: Coffee[] = [
     tags: ['especiais'],
   },
   {
-    id: randomUUID(),
+    id: '11',
     name: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     price: 990,
@@ -95,7 +93,7 @@ export const COFFEES: Coffee[] = [
     tags: ['especiais'],
   },
   {
-    id: randomUUID(),
+    id: '12',
     name: 'Irlandês',
     description:
       'Café expresso com uísque irlandês, açúcar e chantilly por cima',
