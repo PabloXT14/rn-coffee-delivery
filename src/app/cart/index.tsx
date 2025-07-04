@@ -8,20 +8,18 @@ import { colors } from '@/styles/colors'
 
 export default function Cart() {
   return (
-    <>
+    <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.gray[100]} />
 
-      <View style={styles.container}>
-        <Navbar style={{ borderBottomWidth: 1, borderColor: colors.gray[300] }}>
-          <BackButton variant="dark" />
-          <NavbarTitle title="Carrinho" />
-        </Navbar>
+      <Navbar style={{ borderBottomWidth: 1, borderColor: colors.gray[300] }}>
+        <BackButton variant="dark" />
+        <NavbarTitle title="Carrinho" />
+      </Navbar>
 
-        <CartItems />
+      <CartItems />
 
-        <Order />
-      </View>
-    </>
+      <Order />
+    </View>
   )
 }
 

@@ -21,6 +21,10 @@ export function Order() {
   }).format(totalPrice / 100)
 
   const handleGoToPurchaseComplete = () => {
+    if (items.length === 0) {
+      return
+    }
+
     router.navigate('/purchase-complete')
     cleanCart()
   }

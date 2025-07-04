@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { View, StyleSheet, ScrollView, StatusBar } from 'react-native'
+
 import {
   useFonts as useRoboto,
   Roboto_400Regular,
@@ -33,40 +34,35 @@ export default function App() {
 
   if (!fontsLoaded) {
     return (
-      <>
+      <View style={styles.container}>
         <StatusBar
           barStyle="light-content"
           backgroundColor={colors.gray[900]}
         />
-
-        <View style={styles.container}>
-          <Loading size="large" />
-        </View>
-      </>
+        <Loading size="large" />
+      </View>
     )
   }
 
   return (
-    <>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
       <StatusBar barStyle="light-content" backgroundColor={colors.gray[900]} />
 
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ flexGrow: 1 }}
-        showsVerticalScrollIndicator={false}
-      >
-        <IntroSection search={search} setSearch={setSearch} />
+      <IntroSection search={search} setSearch={setSearch} />
 
-        {search ? (
-          <SearchCoffeeList query={search} />
-        ) : (
-          <>
-            <CarouselSection />
-            <CoffeeList />
-          </>
-        )}
-      </ScrollView>
-    </>
+      {search ? (
+        <SearchCoffeeList query={search} />
+      ) : (
+        <>
+          <CarouselSection />
+          <CoffeeList />
+        </>
+      )}
+    </ScrollView>
   )
 }
 
