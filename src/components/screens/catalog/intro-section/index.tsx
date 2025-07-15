@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { Image, Text, View } from 'react-native'
+import Animated, { Easing, SlideInUp } from 'react-native-reanimated'
 
 import { CartIndicator } from '@/components/shared/cart-indicator'
 import { Location, Navbar } from '@/components/shared/navbar'
@@ -16,7 +16,12 @@ type IntroSectionProps = {
 
 export function IntroSection({ search, setSearch }: IntroSectionProps) {
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={styles.container}
+      entering={SlideInUp.delay(100)
+        .duration(600)
+        .easing(Easing.bezier(0, 0.79, 0.52, 0.98))}
+    >
       <Navbar>
         <Location />
 
@@ -45,6 +50,6 @@ export function IntroSection({ search, setSearch }: IntroSectionProps) {
           </Input>
         </View>
       </View>
-    </View>
+    </Animated.View>
   )
 }
