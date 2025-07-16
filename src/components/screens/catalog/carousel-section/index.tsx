@@ -1,5 +1,6 @@
-import { FlatList, View } from 'react-native'
+import { Easing, FlatList, View } from 'react-native'
 import { router } from 'expo-router'
+import Animated, { SlideInRight } from 'react-native-reanimated'
 
 import { COFFEES } from '@/data/coffees'
 
@@ -19,7 +20,14 @@ export function CarouselSection() {
   }
 
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={styles.container}
+      entering={SlideInRight.delay(100)
+        .duration(800)
+        .stiffness(50)
+        .damping(15)
+        .mass(1)}
+    >
       <FlatList
         data={HIGHLIGHT_COFFEES}
         keyExtractor={item => item.id}
@@ -38,6 +46,6 @@ export function CarouselSection() {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.content}
       />
-    </View>
+    </Animated.View>
   )
 }
