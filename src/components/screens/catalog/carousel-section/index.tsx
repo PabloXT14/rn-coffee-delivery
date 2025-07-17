@@ -1,4 +1,5 @@
-import { Easing, FlatList, View } from 'react-native'
+import { useRef, useState } from 'react'
+import { FlatList, type ViewToken } from 'react-native'
 import { router } from 'expo-router'
 import Animated, { SlideInRight } from 'react-native-reanimated'
 
@@ -15,6 +16,20 @@ const HIGHLIGHT_COFFEES = [
 ]
 
 export function CarouselSection() {
+  const [focusedItemId, setFocusedItemId] = useState<string | null>(null)
+
+  const viewabilityConfig = {
+    viewAreaCoveragePercentThreshold: 50, // define quanto do item deve estar visível para ser considerado "visível"
+  }
+
+  const onViewableItemsChanged = useRef(
+    ({ viewableItems }: { viewableItems: Array<ViewToken> }) => {
+      if (viewableItems.length > 0) {
+        setFocusedItemId(viewableItems[0].item.id) // você pode usar lógica diferente para definir o item central
+      }
+    }
+  ).current
+
   const handleNavigation = (id: string) => {
     router.push(`/product/${id}`)
   }
@@ -31,19 +46,24 @@ export function CarouselSection() {
       <FlatList
         data={HIGHLIGHT_COFFEES}
         keyExtractor={item => item.id}
-        renderItem={({ item, index }) => (
-          <HighlightCard
-            coffee={item}
-            onPress={() => handleNavigation(item.id)}
-            style={{
-              transform: [{ scale: index === 0 ? 1.2 : 1 }],
-              marginRight: index === 0 ? 24 : 0,
-              marginLeft: index === 0 ? 24 : 0,
-            }}
-          />
-        )}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={viewabilityConfig}
+        renderItem={({ item }) => {
+          const isFocused = item.id === focusedItemId
+
+          return (
+            <HighlightCard
+              coffee={item}
+              onPress={() => handleNavigation(item.id)}
+              isFocused={isFocused}
+            />
+          )
+        }}
         horizontal
         showsHorizontalScrollIndicator={false}
+        style={{
+          overflow: 'visible', // permite que os cartões se sobreponham
+        }}
         contentContainerStyle={styles.content}
       />
     </Animated.View>

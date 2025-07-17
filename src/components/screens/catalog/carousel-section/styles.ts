@@ -2,9 +2,10 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: -118,
+    marginTop: -108,
     zIndex: 2,
     height: 323,
+    overflow: 'visible',
   },
   content: {
     alignItems: 'center',
