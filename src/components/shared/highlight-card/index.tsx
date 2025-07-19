@@ -110,10 +110,6 @@ export function HighlightCard({
     .format(coffee.price / 100)
     .replace('R$', '')
 
-  if (isFocused) {
-    console.log('Focused item:', coffee.name)
-  }
-
   // Update scale when focused
   useEffect(() => {
     isCardFocused.value = withTiming(isFocused ? 1 : 0, {
