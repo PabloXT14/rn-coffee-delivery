@@ -19,7 +19,7 @@ export function CarouselSection() {
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null)
 
   const viewabilityConfig = {
-    viewAreaCoveragePercentThreshold: 50, // define quanto do item deve estar visível para ser considerado "visível"
+    viewAreaCoveragePercentThreshold: 70, // define quanto do item deve estar visível para ser considerado "visível"
   }
 
   const onViewableItemsChanged = useRef(

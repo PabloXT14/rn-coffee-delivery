@@ -1,11 +1,12 @@
+import { StyleSheet } from 'react-native'
+
 import { colors } from '@/styles/colors'
 import { fontFamily } from '@/styles/font-family'
-import { fontSize } from '@/styles/font-size'
-import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
     position: 'relative',
+    overflow: 'visible',
     width: '100%',
     backgroundColor: colors.gray[200],
     borderWidth: 1,
@@ -16,6 +17,7 @@ export const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
+    zIndex: 10,
   },
   tagContainer: {
     alignItems: 'center',

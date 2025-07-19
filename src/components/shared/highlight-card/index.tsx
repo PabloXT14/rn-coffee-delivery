@@ -1,6 +1,5 @@
+import { useEffect } from 'react'
 import {
-  Image,
-  Text,
   TouchableOpacity,
   View,
   type TouchableOpacityProps,
@@ -11,13 +10,11 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
   interpolate,
-  Extrapolate,
 } from 'react-native-reanimated'
 
 import type { Coffee } from '@/@types/coffee'
 
 import { styles } from './styles'
-import { useEffect } from 'react'
 
 const TouchableOpacityAnimated =
   Animated.createAnimatedComponent(TouchableOpacity)
@@ -37,12 +34,7 @@ export function HighlightCard({
 
   const containerAnimatedStyle = useAnimatedStyle(() => {
     return {
-      paddingHorizontal: interpolate(
-        isCardFocused.value,
-        [0, 1],
-        [12, 16],
-        Extrapolate.CLAMP
-      ),
+      paddingHorizontal: interpolate(isCardFocused.value, [0, 1], [12, 16]),
       paddingTop: interpolate(isCardFocused.value, [0, 1], [72, 96]),
       paddingBottom: interpolate(isCardFocused.value, [0, 1], [16, 20]),
       borderTopLeftRadius: interpolate(isCardFocused.value, [0, 1], [4, 6]),
@@ -53,16 +45,16 @@ export function HighlightCard({
         [28, 36]
       ),
       borderBottomRightRadius: interpolate(isCardFocused.value, [0, 1], [4, 6]),
-      maxWidth: interpolate(isCardFocused.value, [0, 1], [170, 210]),
+      maxWidth: interpolate(isCardFocused.value, [0, 1], [166, 208]),
       gap: interpolate(isCardFocused.value, [0, 1], [12, 14]),
     }
   })
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
-      width: interpolate(isCardFocused.value, [0, 1], [64, 120]),
-      height: interpolate(isCardFocused.value, [0, 1], [64, 120]),
-      top: interpolate(isCardFocused.value, [0, 1], [-10, -32]),
+      width: interpolate(isCardFocused.value, [0, 1], [64, 115]),
+      height: interpolate(isCardFocused.value, [0, 1], [64, 115]),
+      top: interpolate(isCardFocused.value, [0, 1], [-10, -25]),
     }
   })
 
