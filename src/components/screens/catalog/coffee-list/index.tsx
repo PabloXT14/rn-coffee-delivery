@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import { router } from 'expo-router'
+import Animated, { SlideInDown } from 'react-native-reanimated'
 
 import { Tag } from '@/components/shared/tag'
 import { CatalogCard } from '@/components/shared/catalog-card'
@@ -52,7 +53,14 @@ export function CoffeeList() {
     : COFFEE_SECTIONS
 
   return (
-    <View>
+    <Animated.View
+      style={styles.container}
+      entering={SlideInDown.delay(1000)
+        .duration(800)
+        .stiffness(50)
+        .damping(15)
+        .mass(1)}
+    >
       <View style={styles.header}>
         <Text style={styles.title}>Nossos cafés</Text>
 
@@ -87,6 +95,6 @@ export function CoffeeList() {
           </View>
         ))}
       </View>
-    </View>
+    </Animated.View>
   )
 }

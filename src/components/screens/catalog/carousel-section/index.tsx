@@ -37,7 +37,7 @@ export function CarouselSection() {
   return (
     <Animated.View
       style={styles.container}
-      entering={SlideInRight.delay(100)
+      entering={SlideInRight.delay(1000)
         .duration(800)
         .stiffness(50)
         .damping(15)
