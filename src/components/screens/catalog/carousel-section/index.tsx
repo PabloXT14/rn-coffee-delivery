@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
-import { FlatList, type ViewToken } from 'react-native'
+import { FlatList, type ViewToken, View } from 'react-native'
 import { router } from 'expo-router'
-import Animated, { SlideInRight } from 'react-native-reanimated'
 
 import { COFFEES } from '@/data/coffees'
 
@@ -35,24 +34,18 @@ export function CarouselSection() {
   }
 
   return (
-    <Animated.View
-      style={styles.container}
-      entering={SlideInRight.delay(1000)
-        .duration(800)
-        .stiffness(50)
-        .damping(15)
-        .mass(1)}
-    >
+    <View style={styles.container}>
       <FlatList
         data={HIGHLIGHT_COFFEES}
         keyExtractor={item => item.id}
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
-        renderItem={({ item }) => {
+        renderItem={({ item, index }) => {
           const isFocused = item.id === focusedItemId
 
           return (
             <HighlightCard
+              index={index}
               coffee={item}
               onPress={() => handleNavigation(item.id)}
               isFocused={isFocused}
@@ -66,6 +59,6 @@ export function CarouselSection() {
         }}
         contentContainerStyle={styles.content}
       />
-    </Animated.View>
+    </View>
   )
 }

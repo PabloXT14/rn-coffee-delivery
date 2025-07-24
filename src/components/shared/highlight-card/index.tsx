@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import {
+  Dimensions,
   TouchableOpacity,
   View,
   type TouchableOpacityProps,
@@ -10,6 +11,7 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
   interpolate,
+  withSpring,
 } from 'react-native-reanimated'
 
 import type { Coffee } from '@/@types/coffee'
@@ -20,17 +22,27 @@ const TouchableOpacityAnimated =
   Animated.createAnimatedComponent(TouchableOpacity)
 
 type HighlightCardProps = TouchableOpacityProps & {
+  index: number
   coffee: Coffee
   isFocused?: boolean
 }
 
+const SCREEN_WIDTH = Dimensions.get('screen').width
+const INITIAL_DELAY = 500
+
 export function HighlightCard({
+  index,
   coffee,
   isFocused = false,
   style,
   ...props
 }: HighlightCardProps) {
   const isCardFocused = useSharedValue(0)
+  const translateX = useSharedValue(SCREEN_WIDTH) // começa fora da tela
+
+  const cardEntryStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }))
 
   const containerAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -110,6 +122,20 @@ export function HighlightCard({
     .format(coffee.price / 100)
     .replace('R$', '')
 
+  useEffect(() => {
+    const delay = INITIAL_DELAY + index * 150
+
+    const timeout = setTimeout(() => {
+      translateX.value = withSpring(0, {
+        damping: 15,
+        mass: 1,
+        stiffness: 50,
+      })
+    }, delay)
+
+    return () => clearTimeout(timeout)
+  }, [])
+
   // Update scale when focused
   useEffect(() => {
     isCardFocused.value = withTiming(isFocused ? 1 : 0, {
@@ -120,7 +146,12 @@ export function HighlightCard({
 
   return (
     <TouchableOpacityAnimated
-      style={[styles.container, containerAnimatedStyle, style]}
+      // entering={SlideInRight.delay(INITIAL_DELAY + index * 150)
+      //   .duration(800)
+      //   .stiffness(50)
+      //   .damping(15)
+      //   .mass(1)}
+      style={[styles.container, cardEntryStyle, containerAnimatedStyle, style]}
       activeOpacity={1}
       {...props}
     >
