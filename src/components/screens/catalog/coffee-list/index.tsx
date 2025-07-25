@@ -81,13 +81,14 @@ export function CoffeeList() {
       </View>
 
       <View style={styles.list}>
-        {filteredSections.map(section => (
+        {filteredSections.map((section, index) => (
           <View key={section.title} style={styles.sectionList}>
             <Text style={styles.sectionTitle}>{section.title}</Text>
 
             {section.data.map(coffee => (
               <CatalogCard
                 key={coffee.id}
+                index={index}
                 coffee={coffee}
                 onPress={() => handleNavigation(coffee.id)}
               />

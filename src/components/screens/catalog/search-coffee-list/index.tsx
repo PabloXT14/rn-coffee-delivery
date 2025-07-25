@@ -37,9 +37,10 @@ export function SearchCoffeeList({ query }: SearchCoffeeListProps) {
       <View style={styles.content}>
         {coffees.length === 0 && <ListEmpty message="Nenhum item encontrado" />}
 
-        {coffees.map(coffee => (
+        {coffees.map((coffee, index) => (
           <CatalogCard
             key={coffee.id}
+            index={index}
             coffee={coffee}
             onPress={() => handleNavigation(coffee.id)}
           />
